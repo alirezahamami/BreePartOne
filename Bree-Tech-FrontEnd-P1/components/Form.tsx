@@ -1,5 +1,6 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import countryList from 'react-select-country-list';
+import axios from 'axios';
 
 interface Country {
   label: string;
@@ -12,10 +13,18 @@ const Form: React.FC = () => {
   const [dob, setDob] = useState<string>('');
   const [country, setCountry] = useState<string>('');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle form submission logic here
-    console.log({ fullName, dob, country });
+    try {
+      const response = await axios.post('http://localhost:3000/api/SSA', {
+        fullName,
+        dob,
+        country
+      });
+      console.log(response.data); // Logs the response from the backend
+    } catch (error) {
+      console.error('Error submitting form', error);
+    }
   };
 
   const handleFullNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +77,7 @@ const Form: React.FC = () => {
           <input
             type="text"
             id="dob"
-            placeholder="MM/DD/YYYY"
+            placeholder="DD/MM/YYYY"
             value={dob}
             onFocus={(e) => (e.target.type = 'date')}
             onBlur={(e) => (e.target.type = 'text')}
