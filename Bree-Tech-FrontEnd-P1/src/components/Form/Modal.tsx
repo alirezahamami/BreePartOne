@@ -30,7 +30,7 @@ export const Modal: React.FC<ModalProps> = ({ responseMessage, onClose }) => (
           <p className="mb-4 text-gray-700 text-center">You are not approved!</p>
           <div className="flex justify-end">
             {/* Display checkmarks or crosses based on the result array */}
-            {['Name', 'DOB', 'Country'].map((item) => (
+            {['Name', 'DOB', 'Citizenship'].map((item) => (
               <div key={item} className="ml-4 mb-4">
                 <p>
                   {/* Show ✅ for items in the result, ❌ for others */}
