@@ -31,7 +31,7 @@ const Form: React.FC = () => {
         dob,
         country
       });
-      console.log(response.data); // Logs the response from the backend
+      
       if (response.data.message === "Clear") {
         setModalVisible(true);
         setResponseMessage(response.data);
