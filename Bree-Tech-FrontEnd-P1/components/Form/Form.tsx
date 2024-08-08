@@ -47,11 +47,27 @@ const Form: React.FC = () => {
         <h1 id="formTitle" className="text-2xl font-bold mb-6 text-gray-900">
           Screening Form
         </h1>
-        
-        <FormField id="fullName" label="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="John Doe" required disabled={loading} />
-        
-        <FormField id="dob" label="Date of Birth" value={dob} onFocus={(e) => (e.target.type = 'date')} onBlur={(e) => (e.target.type = 'text')} onChange={(e) => setDob(e.target.value)} placeholder="DD/MM/YYYY" required disabled={loading} />
-        
+
+        <FormField 
+          id="fullName" 
+          label="Full Name" 
+          value={fullName} onChange={(e) => setFullName(e.target.value)} 
+          placeholder="John Doe" 
+          required 
+          disabled={loading} 
+        />
+
+        <FormField
+          id="dob"
+          label="Date of Birth"
+          value={dob}
+          onChange={(e) => setDob(e.target.value)}
+          placeholder="DD/MM/YYYY"
+          required
+          disabled={loading}
+          inputType="date"
+        />
+
         <div className="mb-4">
           <label htmlFor="country" className="block text-sm font-medium text-gray-700">
             Country
@@ -72,7 +88,7 @@ const Form: React.FC = () => {
             ))}
           </select>
         </div>
-        
+
         <button
           type="submit"
           className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"

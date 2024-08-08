@@ -70,7 +70,8 @@ The following dependencies are used in the frontend of the application:
 
 
 # Deployment:
-- **Render.com**: The application is deployed and accessible online via [this link](https://breepartone.onrender.com/).
+- **Render.com**: The application is deployed and accessible online at the link below. Please note that it takes 90 seconds to load due to the use of a free tier. 
+https://breepartone.onrender.com/
 
 # Installation and Setup
 ## Prerequisites
