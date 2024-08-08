@@ -140,7 +140,7 @@ const Form: React.FC = () => {
           type="submit"
           className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"
         >
-          Search!
+          Search &#128269;
         </button>
       </form>
       {modalVisible && (
