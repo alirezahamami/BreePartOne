@@ -53,6 +53,7 @@ The following dependencies are used in the frontend of the application:
 - **react**: `^18.3.1` - A JavaScript library for building user interfaces.
 - **react-dom**: `^18.3.1` - For working with React in the browser.
 - **react-select-country-list**: `^2.2.3` - A country list selector for React.
+- **react-datepicker**: `^7.3.0` - A date picker component for React, allowing users to select dates from a calendar interface.
 
 #### DevDependencies
 
@@ -90,8 +91,6 @@ npm install -g npm
 Clone the repository: https://github.com/alirezahamami/BreePartOne.git
 ```sh
 git clone https://github.com/alirezahamami/BreePartOne.git
-
-cd BreePartOne
 ```
 ## Install dependencies:
 ```sh
@@ -105,6 +104,8 @@ Create a .env file in the root directory with the following variables:
 ```sh
 API_KEY= YourAPIKey
 ```
+You can sign up for a free API key at https://www.ofac-api.com/.
+
 Run the application:
 ```sh
 npm start
