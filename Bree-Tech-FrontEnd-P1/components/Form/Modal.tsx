@@ -43,7 +43,11 @@ export const Modal: React.FC<ModalProps> = ({ responseMessage, onClose }) => (
       )}
       <button
         onClick={onClose}
-        className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"
+        className="w-1/2 bg-blue-500 text-white py-2 pr-0 rounded-md 
+                      shadow-2xl hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]
+                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+                      mx-auto block transition-transform duration-200 ease-out
+                      border-2 border-gray-800"
       >
         {/* Button to close the modal */}
         Ok
