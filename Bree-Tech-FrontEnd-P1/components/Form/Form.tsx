@@ -99,6 +99,10 @@ const Form: React.FC = () => {
             onChange={handleDobChange} // Handle date change
             dateFormat="yyyy-MM-dd"
             placeholderText="YYYY-MM-dd"
+            showYearDropdown // Enable year dropdown
+            showMonthDropdown // Enable month dropdown
+            dropdownMode="select" // Use 'select' dropdown mode for both month and year
+            yearDropdownItemNumber={15} // Optional: Show 15 years at a time
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             disabled={loading} // Disable date picker when loading
           />

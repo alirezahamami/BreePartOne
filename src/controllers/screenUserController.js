@@ -1,7 +1,7 @@
 const axios = require('axios'); // Import axios for HTTP requests
 const { extractFields } = require('../utils/extractFields'); // Import the helper function
 const API_KEY = process.env.API_KEY; // Get API key from environment variables
-const PUBLIC_API_URL = 'https://api.ofac-api.com/v4/screen'; // Set API endpoint URL
+const OFAC_API_URL = 'https://api.ofac-api.com/v4/screen'; // Set OFAC API endpoint URL
 const MIN_SCORE = 95; // Define minimum score for matches
 const sources = ["SDN", "NONSDN", "eu"]; // Define sources for screening
 const timeout = 5000; // Set a timeout for the request
@@ -29,7 +29,7 @@ const getScreenUser = async (req, res) => {
 
         let response;
         try {
-            response = await axios.post(PUBLIC_API_URL, screenCheckRequest, {
+            response = await axios.post(OFAC_API_URL, screenCheckRequest, {
                 headers: { 'Content-Type': 'application/json' }, // Set request headers
                 timeout: timeout // Set request timeout
             });
