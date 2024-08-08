@@ -20,11 +20,13 @@ const Form: React.FC = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<ResponseMessage>({ message: '', result: [] });
 
+  const API_BASE_URL = 'https://breepartone.onrender.com/api/SSA' || 'http://localhost:3000/api/SSA';
+
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/SSA', {
+      const response = await axios.post(API_BASE_URL, {
         fullName,
         dob,
         country
