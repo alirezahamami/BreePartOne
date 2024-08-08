@@ -105,6 +105,7 @@ const Form: React.FC = () => {
             yearDropdownItemNumber={15} // Optional: Show 15 years at a time
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             disabled={loading} // Disable date picker when loading
+            required
           />
         </div>
 
@@ -133,7 +134,13 @@ const Form: React.FC = () => {
         {/* Submit button */}
         <button
           type="submit"
-          className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"
+          // className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"
+          className={`w-1/2 bg-blue-500 text-white py-2 px-6 rounded-md 
+                  shadow-2xl hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+                  mx-auto block transition-transform duration-200 ease-out
+                  border-2 border-gray-800
+                  ${loading ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
           disabled={loading} // Disable button when loading
         >
           {loading ? '' : 'Search'} &#128269;

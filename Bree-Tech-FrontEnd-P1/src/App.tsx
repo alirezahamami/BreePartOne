@@ -3,7 +3,7 @@ import Form from '../components/Form/Form'
 
 function App() {
   return (
-    <div className="bg-blue-200 text-black p-4 h-screen flex items-center justify-center">
+    <div className="text-black p-4 h-screen flex items-center justify-center" style={{ backgroundColor: '#f9f5f4' }}>
     <Form />
      </div>
   )
