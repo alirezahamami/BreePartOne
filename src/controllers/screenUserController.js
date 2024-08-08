@@ -3,8 +3,10 @@ const { extractFields } = require('../utils/extractFields'); // Import the helpe
 const API_KEY = process.env.API_KEY;
 const PUBLIC_API_URL = 'https://api.ofac-api.com/v4/screen';
 const MIN_SCORE = 95;
+const sources = ["SDN", "NONSDN", "eu"];
 
-const screenUser = async (req, res) => {
+
+const getScreenUser = async (req, res) => {
     try {
         const { fullName, dob, country } = req.body;
         if (!fullName || !dob || !country) {
@@ -14,7 +16,7 @@ const screenUser = async (req, res) => {
         const screenCheckRequest = {
             apiKey: API_KEY,
             minScore: MIN_SCORE,
-            sources: ["SDN", "NONSDN", "eu"],
+            sources: sources,
             cases: [{
                 name: fullName,
                 dob: dob,
@@ -56,4 +58,4 @@ const screenUser = async (req, res) => {
     }
 };
 
-module.exports = { screenUser };
+module.exports = { getScreenUser };
