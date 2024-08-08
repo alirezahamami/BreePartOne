@@ -33,7 +33,7 @@ export const Modal: React.FC<ModalProps> = ({ responseMessage, onClose }) => (
         onClick={onClose}
         className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"
       >
-        Back to the form
+        Ok
       </button>
     </div>
   </div>
