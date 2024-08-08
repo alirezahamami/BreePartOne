@@ -78,14 +78,14 @@ const Form: React.FC = () => {
         </h1>
 
         {/* Full Name field */}
-        <FormField 
-          id="fullName" 
-          label="Full Name" 
-          value={fullName} 
+        <FormField
+          id="fullName"
+          label="Full Name"
+          value={fullName}
           onChange={handleFullNameChange}  // Handle text input change
-          placeholder="John Doe" 
-          required 
-          disabled={loading} 
+          placeholder="John Doe"
+          required
+          disabled={loading}
         />
 
         {/* Date of Birth field */}
@@ -134,12 +134,11 @@ const Form: React.FC = () => {
         {/* Submit button */}
         <button
           type="submit"
-          // className="w-1/2 bg-blue-500 text-white py-2 px-4 rounded-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-auto block"
-          className={`w-1/2 bg-blue-500 text-white py-2 px-6 rounded-md 
-                  shadow-2xl hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
-                  mx-auto block transition-transform duration-200 ease-out
-                  border-2 border-gray-800
+          className={`w-1/2 bg-blue-500 text-white py-2 pr-0 rounded-md 
+                      shadow-2xl hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]
+                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+                      mx-auto block transition-transform duration-200 ease-out
+                      border-2 border-gray-800
                   ${loading ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
           disabled={loading} // Disable button when loading
         >
