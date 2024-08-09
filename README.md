@@ -39,9 +39,12 @@ The following dependencies are used in the backend of the application:
 - **vite**: `^5.3.4` - A build tool that provides a fast development environment.
 
 #### DevDependencies
-
-- **concurrently**: `^8.2.2` - To run multiple commands concurrently.
-- **nodemon**: `^3.1.0` - Automatically restarts the server on code changes.
+- **concurrently**: ^8.2.2 - To run multiple commands concurrently.
+- **nodemon**: ^3.1.0 - Automatically restarts the server on code changes.
+- **ts-node**: ^10.9.2 - To run TypeScript directly without pre-compilation.
+- **typescript**: ^5.5.4 - TypeScript language and compiler.
+- **@types/express**: ^4.17.21 - TypeScript definitions for Express.
+- **@types/node**: ^22.1.0 - TypeScript definitions for Node.js.
 
 ### Frontend
 
