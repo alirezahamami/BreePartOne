@@ -8,6 +8,7 @@ interface FormFieldProps {
   placeholder: string;
   required?: boolean;
   disabled?: boolean;
+  autoComplete?:string;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -18,6 +19,8 @@ export const FormField: React.FC<FormFieldProps> = ({
   placeholder,
   required = false,
   disabled = false,
+  autoComplete = 'off',
+  
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -38,6 +41,7 @@ export const FormField: React.FC<FormFieldProps> = ({
         required={required}
         aria-required={required}
         disabled={disabled}
+        autoComplete={autoComplete}
       />
     </div>
   );

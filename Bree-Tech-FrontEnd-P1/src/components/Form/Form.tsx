@@ -5,7 +5,7 @@ import { FormField } from './FormField';
 import { Modal } from './Modal';
 import { submitForm } from '../../utils/api';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';  
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Form: React.FC = () => {
   // Get the list of countries for the select dropdown
@@ -19,39 +19,42 @@ const Form: React.FC = () => {
   const [responseMessage, setResponseMessage] = useState({ message: '', result: [] });
   const [loading, setLoading] = useState(false);
 
-  
+
   const handleSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       setLoading(true); // Set loading state to true to display please wait message
       try {
         const response = await submitForm({ fullName, dob, country });
-        setModalVisible(true); 
+        setModalVisible(true);
         setResponseMessage(response.data);
       } catch (error) {
         console.error('Error submitting form:', error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     },
-    [fullName, dob, country] 
+    [fullName, dob, country]
   );
 
-  
+
   const handleFullNameChange = (value: string) => {
     setFullName(value);
   };
 
-  
+
   const handleDobChange = (date: Date | null) => {
     if (date) {
-      setDob(date.toISOString().split('T')[0]); // Convert date to YYYY-MM-DD format
+      // Convert the selected date to UTC and format as YYYY-MM-DD
+      const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      const formattedDate = utcDate.toISOString().split('T')[0];
+      setDob(formattedDate);
     } else {
       setDob(''); // Handle null case
     }
   };
 
-  
+
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCountry(e.target.value);
   };
@@ -80,10 +83,11 @@ const Form: React.FC = () => {
           id="fullName"
           label="Full Name"
           value={fullName}
-          onChange={handleFullNameChange}  
+          onChange={handleFullNameChange}
           placeholder="John Doe"
           required
           disabled={loading}
+          autoComplete="off"
         />
 
         <div className="mb-4">
@@ -92,21 +96,22 @@ const Form: React.FC = () => {
           </label>
           <DatePicker
             id="dob"
-            selected={dob ? new Date(dob) : null}
-            onChange={handleDobChange} 
+            selected={dob ? new Date(dob + 'T00:00:00') : null} // Set the DatePicker component's selected date, ensuring it's in local time for correct display
+            onChange={handleDobChange}
             dateFormat="yyyy-MM-dd"
             placeholderText="YYYY-MM-dd"
             showYearDropdown
-            showMonthDropdown 
-            dropdownMode="select" 
+            showMonthDropdown
+            dropdownMode="select"
             yearDropdownItemNumber={15} // Optional: Show 15 years at a time
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            disabled={loading} 
+            disabled={loading}
             required
+            autoComplete="off"
           />
         </div>
 
-        
+
         <div className="mb-4">
           <label htmlFor="country" className="block text-sm font-medium text-gray-700">
             Country
@@ -114,10 +119,10 @@ const Form: React.FC = () => {
           <select
             id="country"
             value={country}
-            onChange={handleCountryChange} 
+            onChange={handleCountryChange}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
-            disabled={loading} 
+            disabled={loading}
           >
             <option value="">Select a country</option>
             {countries.map((country) => (
@@ -128,7 +133,7 @@ const Form: React.FC = () => {
           </select>
         </div>
 
-        
+
         <button
           type="submit"
           className={`w-1/2 bg-blue-500 text-white py-2 pr-0 rounded-md 
