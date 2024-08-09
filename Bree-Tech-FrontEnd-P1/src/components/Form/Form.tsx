@@ -5,7 +5,7 @@ import { FormField } from './FormField';
 import { Modal } from './Modal';
 import { submitForm } from '../../utils/api';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';  // Import date picker styles
+import 'react-datepicker/dist/react-datepicker.css';  
 
 const Form: React.FC = () => {
   // Get the list of countries for the select dropdown
@@ -19,31 +19,30 @@ const Form: React.FC = () => {
   const [responseMessage, setResponseMessage] = useState({ message: '', result: [] });
   const [loading, setLoading] = useState(false);
 
-  // Handle form submission
+  
   const handleSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault(); // Prevent default form submission
-      setLoading(true); // Set loading state to true
+      event.preventDefault();
+      setLoading(true); // Set loading state to true to display please wait message
       try {
-        // Submit the form data and handle the response
         const response = await submitForm({ fullName, dob, country });
-        setModalVisible(true); // Show the modal with response message
+        setModalVisible(true); 
         setResponseMessage(response.data);
       } catch (error) {
         console.error('Error submitting form:', error);
       } finally {
-        setLoading(false); // Reset loading state
+        setLoading(false); 
       }
     },
-    [fullName, dob, country] // Dependencies for useCallback
+    [fullName, dob, country] 
   );
 
-  // Update fullName state
+  
   const handleFullNameChange = (value: string) => {
     setFullName(value);
   };
 
-  // Update date of birth state, converting date to 'YYYY-MM-DD' format
+  
   const handleDobChange = (date: Date | null) => {
     if (date) {
       setDob(date.toISOString().split('T')[0]); // Convert date to YYYY-MM-DD format
@@ -52,7 +51,7 @@ const Form: React.FC = () => {
     }
   };
 
-  // Update country state
+  
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCountry(e.target.value);
   };
@@ -77,18 +76,16 @@ const Form: React.FC = () => {
           Screening Form
         </h1>
 
-        {/* Full Name field */}
         <FormField
           id="fullName"
           label="Full Name"
           value={fullName}
-          onChange={handleFullNameChange}  // Handle text input change
+          onChange={handleFullNameChange}  
           placeholder="John Doe"
           required
           disabled={loading}
         />
 
-        {/* Date of Birth field */}
         <div className="mb-4">
           <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
             Date of Birth
@@ -96,20 +93,20 @@ const Form: React.FC = () => {
           <DatePicker
             id="dob"
             selected={dob ? new Date(dob) : null}
-            onChange={handleDobChange} // Handle date change
+            onChange={handleDobChange} 
             dateFormat="yyyy-MM-dd"
             placeholderText="YYYY-MM-dd"
-            showYearDropdown // Enable year dropdown
-            showMonthDropdown // Enable month dropdown
-            dropdownMode="select" // Use 'select' dropdown mode for both month and year
+            showYearDropdown
+            showMonthDropdown 
+            dropdownMode="select" 
             yearDropdownItemNumber={15} // Optional: Show 15 years at a time
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            disabled={loading} // Disable date picker when loading
+            disabled={loading} 
             required
           />
         </div>
 
-        {/* Country select dropdown */}
+        
         <div className="mb-4">
           <label htmlFor="country" className="block text-sm font-medium text-gray-700">
             Country
@@ -117,10 +114,10 @@ const Form: React.FC = () => {
           <select
             id="country"
             value={country}
-            onChange={handleCountryChange} // Handle country select change
+            onChange={handleCountryChange} 
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
-            disabled={loading} // Disable select dropdown when loading
+            disabled={loading} 
           >
             <option value="">Select a country</option>
             {countries.map((country) => (
@@ -131,7 +128,7 @@ const Form: React.FC = () => {
           </select>
         </div>
 
-        {/* Submit button */}
+        
         <button
           type="submit"
           className={`w-1/2 bg-blue-500 text-white py-2 pr-0 rounded-md 

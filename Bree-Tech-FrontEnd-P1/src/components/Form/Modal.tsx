@@ -49,7 +49,6 @@ export const Modal: React.FC<ModalProps> = ({ responseMessage, onClose }) => (
                       mx-auto block transition-transform duration-200 ease-out
                       border-2 border-gray-800"
       >
-        {/* Button to close the modal */}
         Ok
       </button>
     </div>
