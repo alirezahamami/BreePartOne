@@ -117,6 +117,24 @@ npm start
 Access the application:
 Open your browser and navigate to http://localhost:3000.
 
+# Production level
+
+## Prepare install 
+To install all the necessary dependencies for both the server and frontend, run the following command:
+```bash
+npm install && cd Bree-Tech-FrontEnd-P1 && npm install && cd..
+```
+## Go live 
+To build the application and start the server in production mode, use the following command:
+```bash
+npm run start:server
+```
+
+This command will:
+
+- Serve the compiled server code from the `dist` directory.
+- Ensure that the frontend&backend is correctly built and served.
+
 ## Usage
 Enter the customer's Full Name, Birth Year, and Country in the form.
 Click the Submit button.
